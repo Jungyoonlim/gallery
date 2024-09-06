@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Gallery from './components/Gallery';
 import './styles/index.css';
@@ -12,12 +13,14 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
+    <Router>
+      <AppContainer>
         <Header />
         <main>
           <Gallery />
         </main>
-    </AppContainer>
+      </AppContainer>
+    </Router>
   );
 };
 
