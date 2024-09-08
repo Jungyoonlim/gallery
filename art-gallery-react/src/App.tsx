@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Gallery from './components/Gallery';
-import About from './components/About';
+import Home from './components/Home';
 import Contact from './components/Contact';
-import './styles/index.css';
+import Layout from './components/Layout';
 import styled from 'styled-components';
+import './styles/index.css';
 import './App.css';
 
 const AppContainer = styled.div`
@@ -17,12 +18,11 @@ const App: React.FC = () => {
   return (
     <AppContainer>
       <Router>
-        <Header />
         <main>
           <Routes>
-          <Route path="/" element={<About />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Gallery" element={<Layout><Gallery /></Layout>} />
+          <Route path="/Contact" element={<Layout><Contact /></Layout>} />
         </Routes>
         </main>
     </Router>

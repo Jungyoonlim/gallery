@@ -1,4 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+
 
 const About: React.FC = () => {
     return (

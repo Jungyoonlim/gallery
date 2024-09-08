@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './Header';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import ArtworkCard from './ArtworkCard';
@@ -52,23 +53,23 @@ const Gallery: React.FC = () => {
 
     return (
         <GalleryContainer>
-            <NavigationButton onClick={handlePrev}>&lt;</NavigationButton>
             <ArtworkContainer> 
-            <ImageWrapper> 
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: 50}}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ width: '100%', height: '100%' }}
-                >   
-                    <ArtworkCard artwork={waterArtworks[currentIndex]} />
-                    </motion.div>
-                </AnimatePresence>
-            </ImageWrapper>
-            <NavigationButton onClick={handleNext}>&gt;</NavigationButton>
+                <NavigationButton onClick={handlePrev}>&lt;</NavigationButton>
+                <ImageWrapper> 
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, x: 50}}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.3 }}
+                            style={{ width: '100%', height: '100%' }}
+                        >   
+                            <ArtworkCard artwork={waterArtworks[currentIndex]} />
+                        </motion.div>
+                    </AnimatePresence>
+                </ImageWrapper>
+                <NavigationButton onClick={handleNext}>&gt;</NavigationButton>
             </ArtworkContainer>
         </GalleryContainer>
     );

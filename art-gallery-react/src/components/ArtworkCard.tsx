@@ -34,7 +34,6 @@ const ArtworkCard: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
         <ArtworkCardContainer>
             <img src={artwork.imageUrl} alt={artwork.title} />
-            {/* Other artwork details */}
         </ArtworkCardContainer>
     );
 };
