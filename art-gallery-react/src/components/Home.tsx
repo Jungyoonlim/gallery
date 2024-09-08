@@ -43,12 +43,19 @@ const Home: React.FC = () => {
           >
             About
           </MenuItem>
-              <MenuItem 
-            to="/gallery"
+        <MenuItem 
+            to="/lightwater"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            Gallery
+            Light and Water
+          </MenuItem>
+          <MenuItem 
+            to="/expressions"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Expressions
           </MenuItem>
           <MenuItem 
             to="/contact"

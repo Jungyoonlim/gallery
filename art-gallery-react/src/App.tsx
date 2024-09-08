@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Gallery from './components/Gallery';
+import Gallery from './components/LightWater';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Layout from './components/Layout';
@@ -21,8 +21,8 @@ const App: React.FC = () => {
         <main>
           <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Gallery" element={<Layout><Gallery /></Layout>} />
-          <Route path="/Contact" element={<Layout><Contact /></Layout>} />
+          <Route path="/LightWater" element={<Layout><Gallery /></Layout>} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
         </main>
     </Router>

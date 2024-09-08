@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import ArtworkCard from './ArtworkCard';
@@ -36,7 +35,7 @@ const NavigationButton = styled.button`
     z-index: 1;
 `;
 
-const Gallery: React.FC = () => {
+const LightWater: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = () => {
@@ -75,4 +74,4 @@ const Gallery: React.FC = () => {
     );
 };
 
-export default Gallery;
+export default LightWater;
