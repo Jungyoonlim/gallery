@@ -1,4 +1,4 @@
-import React from 'react';
+//?import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Artwork } from '../types/artwork';
@@ -20,16 +20,22 @@ interface ArtworkCardProps {
     artwork: Artwork; 
 }
 
-const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork }) => {
+const ArtworkCardContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+`;
+
+const ArtworkCard: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
-        <motion.div
-            whileHover={({ scale: 1.05 })}
-            whileTap={({ scale: 0.95 })}
-            className="artwork-card"
-        >
+        <ArtworkCardContainer>
             <img src={artwork.imageUrl} alt={artwork.title} />
-            <h3>{artwork.title}</h3>
-        </motion.div>
+            {/* Other artwork details */}
+        </ArtworkCardContainer>
     );
 };
 
