@@ -1,7 +1,6 @@
 import { Artwork } from "../types/artwork";
 
-export const artworks: Artwork[] = [
-    // fill in these 
+export const waterArtworks: Artwork[] = [
     {
         id: 1,
         title: "lilies",
@@ -19,5 +18,19 @@ export const artworks: Artwork[] = [
         title: "pond",
         imageUrl: "/images/pond.jpg",
         description: "a pond in interlochen",
+    },
+    {
+        id: 4,
+        title: "pond print",
+        imageUrl: "/images/pond_print.jpg",
+        description: "A pond print",
+    },
+    {
+        id: 5,
+        title: "water",
+        imageUrl: "/images/water.jpg",
+        description: "lens", 
     }
 ]
+
+// export const expressions: ? [] = []

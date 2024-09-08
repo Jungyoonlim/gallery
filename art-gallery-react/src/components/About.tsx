@@ -6,5 +6,7 @@ const About: React.FC = () => {
             <h2>About my Artwork</h2>
             <p>This is a collection of my artwork.</p>
         </div>
-    )
-}
+    );
+};
+
+export default About;
