@@ -33,4 +33,13 @@ export const waterArtworks: Artwork[] = [
     }
 ]
 
-// export const expressions: ? [] = []
+export const expressionArtworks: Artwork[] = [
+
+]
+
+
+export const doodleArtworks: Artwork[] = [
+
+
+
+]

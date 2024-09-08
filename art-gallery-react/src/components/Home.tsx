@@ -58,6 +58,13 @@ const Home: React.FC = () => {
             Expressions
           </MenuItem>
           <MenuItem 
+            to="/doodle"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Doodle
+          </MenuItem>
+          <MenuItem 
             to="/contact"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}

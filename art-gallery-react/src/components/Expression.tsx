@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import ArtworkCard from './ArtworkCard';
 import { waterArtworks } from '../data/artworks';
-import GalleryNav from './GalleryNav';
 
 const GalleryContainer = styled.div`
     display: flex;
-    flex-direction: column; 
     justify-content: center;
     align-items: center;
     height: calc(100vh - 60px);
@@ -28,24 +26,13 @@ const ImageWrapper = styled.div`
     margin: 0 auto; 
 `
 
-const NavigationButton = styled(motion.button)`
+const NavigationButton = styled.button`
     font-size: 2rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 20px; 
     z-index: 1;
-    color: #333;
-    transition: background 0.3s ease;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.4);
-    }
 `;
 
 const LightWater: React.FC = () => {
@@ -66,14 +53,7 @@ const LightWater: React.FC = () => {
     return (
         <GalleryContainer>
             <ArtworkContainer> 
-                <NavigationButton 
-                    onClick={handlePrev}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-                >
-                    &lt;
-                </NavigationButton>
+                <NavigationButton onClick={handlePrev}>&lt;</NavigationButton>
                 <ImageWrapper> 
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -88,24 +68,8 @@ const LightWater: React.FC = () => {
                         </motion.div>
                     </AnimatePresence>
                 </ImageWrapper>
-                <NavigationButton 
-                    onClick={handleNext}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ 
-                        type: 'spring', 
-                        stiffness: 300, 
-                        damping: 10 
-                    }}
-                >
-                    &gt;
-                </NavigationButton>
+                <NavigationButton onClick={handleNext}>&gt;</NavigationButton>
             </ArtworkContainer>
-            <GalleryNav 
-                totalImages={waterArtworks.length} 
-                currentIndex={currentIndex} 
-                onNavigate={setCurrentIndex} 
-            />
         </GalleryContainer>
     );
 };

@@ -56,6 +56,11 @@ const Header: React.FC = () => {
               </NavItem>
               <NavItem whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <NavLink to="/LightWater">Light and Water</NavLink>
+              </NavItem><NavItem whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <NavLink to="/Expression">Expression</NavLink>
+              </NavItem>
+              <NavItem whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <NavLink to="/Doodle">Doodle</NavLink>
               </NavItem>
               <NavItem whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <NavLink to="/contact">Contact</NavLink>
