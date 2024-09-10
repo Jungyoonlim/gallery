@@ -93,7 +93,7 @@ const LightWater: React.FC = () => {
                         damping: 10 
                     }}
                 >
-                    &gt;
+                    <ArrowIcon direction="right" />
                 </NavigationButton>
             </ArtworkContainer>
             <GalleryNav 
