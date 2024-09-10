@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ArtworkCard from './ArtworkCard';
 import { waterArtworks } from '../data/artworks';
 import GalleryNav from './GalleryNav';
+import ArrowIcon from './ArrowIcon';
 
 const GalleryContainer = styled.div`
     display: flex;
@@ -29,23 +30,17 @@ const ImageWrapper = styled.div`
 `
 
 const NavigationButton = styled(motion.button)`
-    font-size: 2rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    color: #333;
-    transition: background 0.3s ease;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.4);
-    }
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:focus {
+    outline: none;
+  }
 `;
 
 const LightWater: React.FC = () => {
@@ -72,7 +67,7 @@ const LightWater: React.FC = () => {
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 10 }}
                 >
-                    &lt;
+                    <ArrowIcon direction="left" />
                 </NavigationButton>
                 <ImageWrapper> 
                     <AnimatePresence mode="wait">
