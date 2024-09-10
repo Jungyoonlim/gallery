@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import About from './components/About';
 import Gallery from './components/LightWater';
 import Home from './components/Home';
 import Contact from './components/Contact';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <main>
           <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/LightWater" element={<Layout><Gallery /></Layout>} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>

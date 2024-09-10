@@ -11,6 +11,12 @@ const HomeContainer = styled.div`
     background-color: #f0f0f0;
 `
 
+const ContentContainer = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 const MenuContainer = styled(motion.div)`
     display: flex;
     flex-direction: column; 
@@ -31,47 +37,49 @@ const MenuItem = styled(motion(Link))`
 const Home: React.FC = () => {
     return (
       <HomeContainer>
-        <MenuContainer
+        <ContentContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <MenuItem 
-            to="/about"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            About
-          </MenuItem>
-        <MenuItem 
-            to="/lightwater"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Light and Water
-          </MenuItem>
-          <MenuItem 
-            to="/expressions"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Expressions
-          </MenuItem>
-          <MenuItem 
-            to="/doodle"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Doodle
-          </MenuItem>
-          <MenuItem 
-            to="/contact"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Contact
-          </MenuItem>
-        </MenuContainer>
+          <MenuContainer>
+            <MenuItem 
+              to="/about"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              About
+            </MenuItem>
+            <MenuItem 
+              to="/lightwater"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Light and Water
+            </MenuItem>
+            <MenuItem 
+              to="/expressions"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Expressions
+            </MenuItem>
+            <MenuItem 
+              to="/doodle"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Doodle
+            </MenuItem>
+            <MenuItem 
+              to="/contact"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact
+            </MenuItem>
+          </MenuContainer>
+        </ContentContainer>
       </HomeContainer>
     );
   };
