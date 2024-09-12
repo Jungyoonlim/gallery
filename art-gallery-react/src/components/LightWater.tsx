@@ -43,8 +43,39 @@ const NavigationButton = styled(motion.button)`
   }
 `;
 
+const GridContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px; 
+`
+const FullScreenContainer = styled(motion.div)`
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    button: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+`
+
 const LightWater: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isFullScreen, setIsFullScreen] = useState(false);
+
+    const handleArtworkClick = (index: number) => {
+        setCurrentIndex(index);
+        setIsFullScreen(true);
+    };
+
+    const handleClose = () => {
+        setIsFullScreen(false);
+    }
+
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => 
@@ -60,18 +91,37 @@ const LightWater: React.FC = () => {
 
     return (
         <GalleryContainer>
-            <ArtworkContainer> 
-                <NavigationButton 
-                    onClick={handlePrev}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-                >
-                    <ArrowIcon direction="left" />
-                </NavigationButton>
-                <ImageWrapper> 
-                    <AnimatePresence mode="wait">
-                        <motion.div
+            <GridContainer>
+                {waterArtworks.map((artwork, index) => (
+                    <motion.div
+                        key={artwork.id}
+                        layoutId={`artwork-${artwork.id}`}
+                        onClick={() => handleArtworkClick(index)}
+                    >
+                        <ArtworkCard artwork={artwork} />
+                    </motion.div>
+                ))}
+            </GridContainer>
+            <AnimatePresence>
+                {isFullScreen && (
+                    <FullScreenContainer
+                        key="fullscreen"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <ArtworkContainer> 
+                            <NavigationButton 
+                                onClick={handlePrev}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+                            >
+                                <ArrowIcon direction="left" />
+                            </NavigationButton>
+                            <ImageWrapper> 
+                                <AnimatePresence mode="wait">
+                                    <motion.div
                             key={currentIndex}
                             initial={{ opacity: 0, x: 50}}
                             animate={{ opacity: 1, x: 0 }}
@@ -101,6 +151,10 @@ const LightWater: React.FC = () => {
                 currentIndex={currentIndex} 
                 onNavigate={setCurrentIndex} 
             />
+            <button onClick={handleClose}>Close</button>
+            </FullScreenContainer>
+                )}
+        </AnimatePresence>
         </GalleryContainer>
     );
 };
