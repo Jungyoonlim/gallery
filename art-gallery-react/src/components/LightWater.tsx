@@ -1,33 +1,61 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion'; 
+import { motion, AnimatePresence } from 'framer-motion';
 import ArtworkCard from './ArtworkCard';
 import { waterArtworks } from '../data/artworks';
 import GalleryNav from './GalleryNav';
 import ArrowIcon from './ArrowIcon';
 
-const GalleryContainer = styled.div`
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px);
-    width: 100%;
-    position: relative;
+const GalleryContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: white;
 `;
 
-const ArtworkContainer = styled.div`
-    width: 90%; 
-    max-width: 1200px; 
-    display: flex; 
-    align-items: center; 
+const GridContainer = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+  max-width: 1200px;
 `;
 
-const ImageWrapper = styled.div`
-    width: 95%; 
-    aspect-ratio: 16 / 9; 
-    margin: 0 auto; 
-`
+const SlideshowContainer = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const CloseButton = styled(motion.button)`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+`;
 
 const NavigationButton = styled(motion.button)`
   background: transparent;
@@ -37,124 +65,100 @@ const NavigationButton = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  &:focus {
-    outline: none;
-  }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
-const GridContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    width: 90%;
-    max-width: 1200px; 
-`
-const FullScreenContainer = styled(motion.div)`
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    button: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-`
+const PrevButton = styled(NavigationButton)`
+  left: 20px;
+`;
+
+const NextButton = styled(NavigationButton)`
+  right: 20px;
+`;
+
+const ImageWrapper = styled(motion.div)`
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const LightWater: React.FC = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isFullScreen, setIsFullScreen] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     const handleArtworkClick = (index: number) => {
-        setCurrentIndex(index);
-        setIsFullScreen(true);
+        setSelectedIndex(index);
     };
 
     const handleClose = () => {
-        setIsFullScreen(false);
-    }
-
+        setSelectedIndex(null);
+    };
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex < waterArtworks.length - 1 ? prevIndex + 1: 0
+        setSelectedIndex((prevIndex) => 
+            prevIndex !== null ? (prevIndex + 1) % waterArtworks.length : null
         );
     };
 
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex > 0 ? prevIndex - 1 : waterArtworks.length - 1 
+        setSelectedIndex((prevIndex) => 
+            prevIndex !== null ? (prevIndex - 1 + waterArtworks.length) % waterArtworks.length : null
         );
     };
 
     return (
         <GalleryContainer>
-            <GridContainer>
+            <GridContainer layout>
                 {waterArtworks.map((artwork, index) => (
                     <motion.div
                         key={artwork.id}
                         layoutId={`artwork-${artwork.id}`}
                         onClick={() => handleArtworkClick(index)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <ArtworkCard artwork={artwork} />
                     </motion.div>
                 ))}
             </GridContainer>
             <AnimatePresence>
-                {isFullScreen && (
-                    <FullScreenContainer
-                        key="fullscreen"
+                {selectedIndex !== null && (
+                    <SlideshowContainer
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        <ArtworkContainer> 
-                            <NavigationButton 
-                                onClick={handlePrev}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-                            >
-                                <ArrowIcon direction="left" />
-                            </NavigationButton>
-                            <ImageWrapper> 
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0, x: 50}}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.3 }}
-                            style={{ width: '100%', height: '100%' }}
-                        >   
-                            <ArtworkCard artwork={waterArtworks[currentIndex]} />
-                        </motion.div>
-                    </AnimatePresence>
-                </ImageWrapper>
-                <NavigationButton 
-                    onClick={handleNext}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ 
-                        type: 'spring', 
-                        stiffness: 300, 
-                        damping: 10 
-                    }}
-                >
-                    <ArrowIcon direction="right" />
-                </NavigationButton>
-            </ArtworkContainer>
-            <GalleryNav 
-                totalImages={waterArtworks.length} 
-                currentIndex={currentIndex} 
-                onNavigate={setCurrentIndex} 
-            />
-            <button onClick={handleClose}>Close</button>
-            </FullScreenContainer>
+                        <CloseButton onClick={handleClose}>✕</CloseButton>
+                        <PrevButton onClick={handlePrev}>
+                            <ArrowIcon direction="left" />
+                        </PrevButton>
+                        <ImageWrapper>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={selectedIndex}
+                                    initial={{ opacity: 0, x: 50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -50 }}
+                                    transition={{ duration: 0.3 }}
+                                >   
+                                    <ArtworkCard artwork={waterArtworks[selectedIndex]} />
+                                </motion.div>
+                            </AnimatePresence>
+                        </ImageWrapper>
+                        <NextButton onClick={handleNext}>
+                            <ArrowIcon direction="right" />
+                        </NextButton>
+                        <GalleryNav 
+                            totalImages={waterArtworks.length} 
+                            currentIndex={selectedIndex} 
+                            onNavigate={setSelectedIndex} 
+                        />
+                    </SlideshowContainer>
                 )}
-        </AnimatePresence>
+            </AnimatePresence>
         </GalleryContainer>
     );
 };
