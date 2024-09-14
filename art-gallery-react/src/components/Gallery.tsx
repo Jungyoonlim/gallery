@@ -162,8 +162,7 @@ const Gallery: React.FC = () => {
         />
       ))}
       <Text>
-        Jungyoon Lim
-        Artist, Designer, Engineers
+        Jungyoon Lim 
       </Text>
       <AnimatePresence initial={false} custom={direction}>
         {selectedIndex !== null && (
