@@ -6,8 +6,8 @@ const NavContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 260px;
+    position: absolute;
+    bottom: 60px;
     left: 0;
     right: 0;
 `;

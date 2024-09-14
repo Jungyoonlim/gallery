@@ -34,16 +34,6 @@ const SlideshowContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  img {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 `;
 
 const CloseButton = styled(motion.button)`
@@ -88,6 +78,24 @@ const ImageWrapper = styled(motion.div)`
 
 const LightWater: React.FC = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [direction, setDirection] = useState(0);
+
+    const slideVariants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? '50%' : '-50%',
+            opacity: 0,
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction: number) => ({ 
+            zIndex: 0,
+            x: direction > 0 ? '-50%' : '50%',    
+            opacity: 0,
+        }),
+    };
 
     const handleArtworkClick = (index: number) => {
         setSelectedIndex(index);
@@ -98,12 +106,14 @@ const LightWater: React.FC = () => {
     };
 
     const handleNext = () => {
+        setDirection(1);
         setSelectedIndex((prevIndex) => 
             prevIndex !== null ? (prevIndex + 1) % waterArtworks.length : null
         );
     };
 
     const handlePrev = () => {
+        setDirection(-1);
         setSelectedIndex((prevIndex) => 
             prevIndex !== null ? (prevIndex - 1 + waterArtworks.length) % waterArtworks.length : null
         );
@@ -124,30 +134,33 @@ const LightWater: React.FC = () => {
                     </motion.div>
                 ))}
             </GridContainer>
-            <AnimatePresence>
+            <AnimatePresence initial={false} custom={direction}>
                 {selectedIndex !== null && (
                     <SlideshowContainer
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                     >
                         <CloseButton onClick={handleClose}>✕</CloseButton>
                         <PrevButton onClick={handlePrev}>
                             <ArrowIcon direction="left" />
                         </PrevButton>
-                        <ImageWrapper>
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={selectedIndex}
-                                    initial={{ opacity: 0, x: 50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -50 }}
-                                    transition={{ duration: 0.3 }}
-                                >   
-                                    <ArtworkCard artwork={waterArtworks[selectedIndex]} />
-                                </motion.div>
-                            </AnimatePresence>
-                        </ImageWrapper>
+                        <AnimatePresence initial={false} custom={direction} mode="wait">
+                            <ImageWrapper
+                                key={selectedIndex}
+                                custom={direction}
+                                variants={slideVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                transition={{
+                                    x: { type: "spring", stiffness: 150, damping: 30 },
+                                }}
+                            >
+                                <ArtworkCard artwork={waterArtworks[selectedIndex]} />
+                            </ImageWrapper>
+                        </AnimatePresence>
                         <NextButton onClick={handleNext}>
                             <ArrowIcon direction="right" />
                         </NextButton>
