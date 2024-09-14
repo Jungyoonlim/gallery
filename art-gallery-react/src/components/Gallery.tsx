@@ -38,18 +38,15 @@ const Gallery: React.FC = () => {
       <Image top={37} left={327} width={350} height={269.36} url="/images/pond.jpg" />
       <Image top={37} left={1087} width={332} height={451.14} url="/images/lilies.jpg" />
       <Image top={340} left={327} width={350} height={283.33} url="/images/water.jpg" />
-      <Image top={343} left={715} width={350} height={277.33} url="/images/Joanne LIm 3.jpg" />
+      // fix this 
+      <Image top={343} left={715} width={350} height={277.33} url="/images/faces.jpg" />
       <Image top={37} left={715} width={350} height={277.33} url="/images/pond_print.jpg" />
       <Image top={512} left={1087} width={322} height={443} url="/images/Student Images_-4 2.jpg" />
       <Image top={660} left={327} width={350} height={263.46} url="/images/chandelier.jpg" />
       <Image top={648} left={715} width={350} height={287.46} url="/images/duck.jpg" />
       <Text>
         Jungyoon Lim
-        Artist, Designer, Engineer
-        About
-        Light and Water
-        Expressions
-        Doodle
+        Artist, Designer, Engineers
       </Text>
     </GalleryContainer>
   );
