@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 import { Artwork } from '../types/artwork';
 
 const Card = styled.div`
-    width: 300px; 
+    width: 100%; 
+    height: 100%;
+    aspect-ratio: 16/9; 
+    overflow: hidden; 
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;

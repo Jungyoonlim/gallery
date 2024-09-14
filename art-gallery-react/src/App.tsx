@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import About from './components/About';
-import Gallery from './components/LightWater';
+import LightWater from './components/LightWater';
 import Home from './components/Home';
 import Contact from './components/Contact';
-import Layout from './components/Layout';
+import Gallery from './components/Gallery';
 import styled from 'styled-components';
 import './styles/index.css';
 import './App.css';
@@ -21,15 +21,15 @@ const App: React.FC = () => {
       <Router>
         <main>
           <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Layout><About /></Layout>} />
-          <Route path="/LightWater" element={<Layout><Gallery /></Layout>} />
-          <Route path="/Contact" element={<Contact />} />
-        </Routes>
+            <Route path="/" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/lightwater" element={<LightWater />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
         </main>
-    </Router>
+      </Router>
     </AppContainer>
-  )
+  );
 }
 
 export default App;
