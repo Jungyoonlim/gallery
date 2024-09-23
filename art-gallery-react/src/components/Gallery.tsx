@@ -13,7 +13,7 @@ const GalleryContainer = styled.div`
 
 const TextSection = styled.div`
   width: 200px;
-  padding-right: 20px; 
+  padding-right: 40px; 
 `;
 
 const GridContainer = styled(motion.div)`
@@ -21,14 +21,15 @@ const GridContainer = styled(motion.div)`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   flex-grow: 1; 
+  padding: 20px; 
 `;
 
 const GridItem = styled.div<{url: string}>`
   aspect-ratio: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
   overflow: hidden; 
 `
 
@@ -89,25 +90,8 @@ const NavigationButton = styled(motion.button)`
   transform: translateY(-50%);
 `;
 
-const PrevButton = styled(NavigationButton)`
-  left: 20px;
-`;
-
-const NextButton = styled(NavigationButton)`
-  right: 20px;
-`;
-
-const ImageWrapper = styled(motion.div)`
-  width: 80%;
-  height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Gallery: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [direction, setDirection] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null); 
 
   const artworks = [
@@ -116,49 +100,10 @@ const Gallery: React.FC = () => {
     { id: 3, top: 340, left: 327, width: 350, height: 283.33, url: "/images/water.jpg" },
     { id: 4, top: 343, left: 715, width: 350, height: 277.33, url: "/images/faces.jpg" },
     { id: 5, top: 37, left: 715, width: 350, height: 277.33, url: "/images/pond_print.jpg" },
-    { id: 6, top: 512, left: 1087, width: 322, height: 443, url: "/images/Student Images_-4 2.jpg" },
-    { id: 7, top: 660, left: 327, width: 350, height: 263.46, url: "/images/chandelier.jpg" },
+    { id: 6, top: 512, left: 1087, width: 322, height: 443, url: "/images/light.jpg" },
+    { id: 7, top: 660, left: 327, width: 350, height: 263.46, url: "/images/glass.jpg" },
     { id: 8, top: 648, left: 715, width: 350, height: 287.46, url: "/images/duck.jpg" },
   ];
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '50%' : '-50%',
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({ 
-      zIndex: 0,
-      x: direction > 0 ? '-50%' : '50%',    
-      opacity: 0,
-    }),
-  };
-
-  const handleArtworkClick = (index: number) => {
-    setSelectedIndex(index);
-  };
-
-  const handleClose = () => {
-    setSelectedIndex(null);
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    setSelectedIndex((prevIndex) => 
-      prevIndex !== null ? (prevIndex + 1) % artworks.length : null
-    );
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setSelectedIndex((prevIndex) => 
-      prevIndex !== null ? (prevIndex - 1 + artworks.length) % artworks.length : null
-    );
-  };
 
   return (
     <GalleryContainer>
@@ -170,15 +115,19 @@ const Gallery: React.FC = () => {
     </TextSection>
     <GridContainer>
       {artworks.map((artwork) => (
-        <GridItem
+        <motion.div
+          key={artwork.id}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95}}
+        >
+          <GridItem
           key={artwork.id}
           url={artwork.url}
           onClick={() => setSelectedImage(artwork.url)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
         >
           <Image src={artwork.url} alt={`Artwork ${artwork.id}`} />
         </GridItem>
+        </motion.div>
       ))}
     </GridContainer>
     <AnimatePresence>
