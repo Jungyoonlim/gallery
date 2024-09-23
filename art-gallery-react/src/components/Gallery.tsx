@@ -5,26 +5,38 @@ import ArtworkCard from './ArtworkCard';
 import GalleryNav from './GalleryNav';
 import ArrowIcon from './ArrowIcon';
 
-const GalleryContainer = styled(motion.div)`
-    position: relative;
-    width: 1440px;
-    height: 1024px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+const GalleryContainer = styled.div`
+  display: flex;
+  padding: 20px;
+  background-color: #ffffff;
 `;
 
-const Image = styled(motion.div)<{ top: number; left: number; width: number; height: number; url: string }>`
-  position: absolute;
-  top: ${props => props.top}px;
-  left: ${props => props.left}px;
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-  background: url(${props => props.url});
-  background-size: cover;
-  cursor: pointer;
+const TextSection = styled.div`
+  width: 200px;
+  padding-right: 20px; 
 `;
+
+const GridContainer = styled(motion.div)`
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  flex-grow: 1; 
+`;
+
+const GridItem = styled.div<{url: string}>`
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden; 
+`
+
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+`
 
 const Text = styled.div`
   position: absolute;
@@ -50,6 +62,7 @@ const SlideshowContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000; 
 `;
 
 const CloseButton = styled(motion.button)`
@@ -95,6 +108,7 @@ const ImageWrapper = styled(motion.div)`
 const Gallery: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null); 
 
   const artworks = [
     { id: 1, top: 37, left: 327, width: 350, height: 269.36, url: "/images/pond.jpg" },
@@ -148,62 +162,41 @@ const Gallery: React.FC = () => {
 
   return (
     <GalleryContainer>
-      {artworks.map((artwork, index) => (
-        <Image
+    <TextSection>
+      <h2>Jungyoon Lim</h2>
+      <p>Artist, Designer, Engineer</p>
+      <p>About</p>
+      <p>Light and Water Expressions</p>
+    </TextSection>
+    <GridContainer>
+      {artworks.map((artwork) => (
+        <GridItem
           key={artwork.id}
-          top={artwork.top}
-          left={artwork.left}
-          width={artwork.width}
-          height={artwork.height}
           url={artwork.url}
-          onClick={() => handleArtworkClick(index)}
+          onClick={() => setSelectedImage(artwork.url)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-        />
+        >
+          <Image src={artwork.url} alt={`Artwork ${artwork.id}`} />
+        </GridItem>
       ))}
-      <Text>
-        Jungyoon Lim 
-      </Text>
-      <AnimatePresence initial={false} custom={direction}>
-        {selectedIndex !== null && (
-          <SlideshowContainer
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <CloseButton onClick={handleClose}>✕</CloseButton>
-            <PrevButton onClick={handlePrev}>
-              <ArrowIcon direction="left" />
-            </PrevButton>
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <ImageWrapper
-                key={selectedIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 150, damping: 30 },
-                }}
-              >
-                <img src={artworks[selectedIndex].url} alt={`Artwork ${selectedIndex + 1}`} style={{ maxWidth: '100%', maxHeight: '100%' }} />
-              </ImageWrapper>
-            </AnimatePresence>
-            <NextButton onClick={handleNext}>
-              <ArrowIcon direction="right" />
-            </NextButton>
-            <GalleryNav 
-              totalImages={artworks.length} 
-              currentIndex={selectedIndex} 
-              onNavigate={setSelectedIndex} 
-            />
-          </SlideshowContainer>
-        )}
-      </AnimatePresence>
-    </GalleryContainer>
+    </GridContainer>
+    <AnimatePresence>
+      {selectedImage && (
+        <SlideshowContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <img src={selectedImage} alt="Selected artwork" style={{ maxHeight: '80vh', maxWidth: '80vw' }} />
+          <CloseButton onClick={() => setSelectedImage(null)}>✕</CloseButton>
+        </SlideshowContainer>
+      )}
+    </AnimatePresence>
+  </GalleryContainer>
   );
 };
 
 export default Gallery;
+
+
