@@ -30,12 +30,6 @@ export const waterArtworks: Artwork[] = [
         title: "water",
         imageUrl: "/images/water.jpg",
         description: "lens", 
-    },
-    {
-        id: 6,
-        title: "expressions",
-        imageUrl: "/images/faces.jpg",
-        description: "faces",
     }
 ]
 
