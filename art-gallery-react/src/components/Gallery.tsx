@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -25,6 +26,15 @@ const TextSection = styled.div`
     margin-bottom: 30px; 
     margin: 5px 0; 
   }
+  
+  p:hover {
+    background-color: #B2BEB5; 
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
 
 const GridContainer = styled(motion.div)`
@@ -95,7 +105,12 @@ const Gallery: React.FC = () => {
       <h2>Jungyoon Lim</h2>
       <h4>Artist, Designer, Engineer</h4>
       <p>About</p>
-      <p>Light and Water Expressions</p>
+      <StyledLink to="/LightWater">
+        <p>Light and Water</p>
+      </StyledLink>
+      <StyledLink to="/Expression">
+        <p>Expression</p>
+      </StyledLink>
     </TextSection>
     <GridContainer>
       {artworks.map((artwork) => (
