@@ -15,8 +15,14 @@ const TextSection = styled.div`
   h2 {
     margin-bottom: 5px;
   }
+
+  h4 {
+    margin-top: 5px; 
+    color: #59515E; 
+  }
   
   p {
+    margin-bottom: 30px; 
     margin: 5px 0; 
   }
 `;
@@ -87,7 +93,7 @@ const Gallery: React.FC = () => {
     <GalleryContainer>
     <TextSection>
       <h2>Jungyoon Lim</h2>
-      <p>Artist, Designer, Engineer</p>
+      <h4>Artist, Designer, Engineer</h4>
       <p>About</p>
       <p>Light and Water Expressions</p>
     </TextSection>
