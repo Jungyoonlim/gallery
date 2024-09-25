@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import ArtworkCard from './ArtworkCard';
-import GalleryNav from './GalleryNav';
-import ArrowIcon from './ArrowIcon';
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -14,6 +11,14 @@ const GalleryContainer = styled.div`
 const TextSection = styled.div`
   width: 200px;
   padding-right: 40px; 
+
+  h2 {
+    margin-bottom: 5px;
+  }
+  
+  p {
+    margin: 5px 0; 
+  }
 `;
 
 const GridContainer = styled(motion.div)`
@@ -29,7 +34,7 @@ const GridItem = styled.div<{url: string}>`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: white;
+  background-color: #EEEEEE;
   overflow: hidden; 
 `
 
@@ -38,20 +43,6 @@ const Image = styled.img`
   max-height: 100%;
   object-fit: contain; 
 `
-
-const Text = styled.div`
-  position: absolute;
-  width: 194px;
-  height: 90px;
-  left: 27px;
-  top: 37px;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: #000000;
-`;
 
 const SlideshowContainer = styled(motion.div)`
   position: fixed;
@@ -75,19 +66,6 @@ const CloseButton = styled(motion.button)`
   font-size: 24px;
   cursor: pointer;
   z-index: 10;
-`;
-
-const NavigationButton = styled(motion.button)`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 `;
 
 
