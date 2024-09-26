@@ -52,6 +52,13 @@ const GridItem = styled.div<{url: string}>`
   align-items: flex-start;
   background-color: #EEEEEE;
   overflow: hidden; 
+  justify-content: center;
+  align-items: center; 
+  
+  img {
+    max-width: 90%;
+    max-height: 90%;
+  }
 `
 
 const Image = styled.img`
