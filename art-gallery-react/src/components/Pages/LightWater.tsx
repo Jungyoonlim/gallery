@@ -69,8 +69,8 @@ const NextButton = styled(NavigationButton)`
 `;
 
 const ImageWrapper = styled(motion.div)`
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;

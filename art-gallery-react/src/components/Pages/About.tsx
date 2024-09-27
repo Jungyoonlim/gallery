@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 
-const AboutContainer = styled(motion.div)`
-    padding: 20px; 
-`;
-
-
 const Menu = styled.div`
     position: absolute;
     font-family: 'Fira Sans';
@@ -26,19 +21,19 @@ const SkillContainer = styled.div`
 
 const About: React.FC = () => {
     return (
-        <AboutContainer>
             <div className="AboutContainer">
             <Menu>
                 <SkillContainer>
-                <section className="left-col">
-                <ul>About</ul>
-                <ul>Light and Water</ul>
-                <ul>Expressions</ul>
-                <ul>Pictorial</ul>
-            </section>
             <section className="skillContainer">
                 <article className="technical-skills">
-
+                <ul>HTML/CSS</ul>
+                <ul>JavaScript</ul>
+                <ul>TypeScript</ul>
+                <ul>React</ul>
+                <ul>Tailwind</ul>
+                <ul>Next.js</ul>
+                <ul>Three.js</ul>
+                <ul>Framer Motion</ul>
 
                 </article>
                 <article className="design">
@@ -48,7 +43,6 @@ const About: React.FC = () => {
                 </SkillContainer>
         </Menu>
         </div>
-        </AboutContainer>
     );
 };
 
