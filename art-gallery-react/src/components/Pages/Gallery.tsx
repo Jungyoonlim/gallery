@@ -108,17 +108,6 @@ const Gallery: React.FC = () => {
 
   return (
     <GalleryContainer>
-    <TextSection>
-      <h2>Jungyoon Lim</h2>
-      <h4>Artist, Designer, Engineer</h4>
-      <p>About</p>
-      <StyledLink to="/LightWater">
-        <p>Light and Water</p>
-      </StyledLink>
-      <StyledLink to="/Expression">
-        <p>Expression</p>
-      </StyledLink>
-    </TextSection>
     <GridContainer>
       {artworks.map((artwork) => (
         <motion.div
