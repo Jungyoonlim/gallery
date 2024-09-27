@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import ArtworkCard from './ArtworkCard';
-import { waterArtworks } from '../data/artworks';
-import GalleryNav from './GalleryNav';
-import ArrowIcon from './ArrowIcon';
+import ArtworkCard from '../ArtworkCard';
+import { waterArtworks } from '../../data/artworks';
+import GalleryNav from '../GalleryNav';
+import ArrowIcon from '../Icons/ArrowIcon';
 
 const GalleryContainer = styled(motion.div)`
   display: flex;

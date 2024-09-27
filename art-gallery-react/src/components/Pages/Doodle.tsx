@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion'; 
-import ArtworkCard from './ArtworkCard';
-import { doodleArtworks } from '../data/artworks';
+import ArtworkCard from '../ArtworkCard';
+import { doodleArtworks } from '../../data/artworks';
 
 const GalleryContainer = styled.div`
     display: flex;

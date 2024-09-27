@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import About from './components/About';
-import LightWater from './components/LightWater';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import Gallery from './components/Gallery';
+import About from './components/Pages/LightWater';
+import LightWater from './components/Pages/LightWater'; 
+import Contact from './components/Pages/Contact';
+import Gallery from './components/Pages/Gallery';
 import styled from 'styled-components';
 import './styles/index.css';
 import './App.css';

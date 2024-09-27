@@ -57,7 +57,7 @@ const GridItem = styled.div<{url: string}>`
   
   img {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 95%;
   }
 `
 

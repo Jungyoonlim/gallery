@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArtworkCard from './ArtworkCard';
 import GalleryNav from './GalleryNav';
-import ArrowIcon from './ArrowIcon';
+import ArrowIcon from './Icons/ArrowIcon';
 
 const NavigationButton = styled(motion.button)`
   background: transparent;
