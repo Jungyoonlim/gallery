@@ -4,12 +4,11 @@ import { motion } from 'framer-motion';
 
 
 const AboutContainer = styled(motion.div)`
-
+    padding: 20px; 
 `;
 
 
-
-const menu = styled.div`
+const Menu = styled.div`
     position: absolute;
     font-family: 'Fira Sans';
     font-style: normal;
@@ -18,24 +17,25 @@ const menu = styled.div`
     line-height: 36px;
 `;
 
-const skillContainer = styled.div`
-
-
+const SkillContainer = styled.div`
+    margin-top: 20px; 
 `;
+
 
 
 
 const About: React.FC = () => {
     return (
-        <div className="AboutContainer">
-            <div className="menu">
-            <section className="left-col">
+        <AboutContainer>
+            <div className="AboutContainer">
+            <Menu>
+                <SkillContainer>
+                <section className="left-col">
                 <ul>About</ul>
                 <ul>Light and Water</ul>
                 <ul>Expressions</ul>
                 <ul>Pictorial</ul>
             </section>
-
             <section className="skillContainer">
                 <article className="technical-skills">
 
@@ -45,9 +45,10 @@ const About: React.FC = () => {
 
                 </article>
             </section>
+                </SkillContainer>
+        </Menu>
         </div>
-        </div>
-
+        </AboutContainer>
     );
 };
 
