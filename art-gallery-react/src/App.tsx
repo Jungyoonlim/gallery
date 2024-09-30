@@ -4,7 +4,7 @@ import About from './components/Pages/About';
 import LightWater from './components/Pages/LightWater'; 
 import Contact from './components/Pages/Contact';
 import Gallery from './components/Pages/Gallery';
-import Layout from './components/Layout'
+import Layout from './components/Layout';
 import styled from 'styled-components';
 import './styles/index.css';
 import './App.css';
