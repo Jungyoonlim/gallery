@@ -2,62 +2,50 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+const BioContainer = styled.div`
+  position: absolute;
+  width: 810px;
+  max-width: calc(100% - 40px);
+  left: 475px;
+  top: 10px;
+  padding: 20px;
+  box-sizing: border-box;
 
-const Menu = styled.div`
-    position: absolute;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    color: #333; 
-    font-size: 20px;
-    font-family: 'Inter', sans-serif; 
-    line-height: 36px;
-`;
-
-const AboutContainer = styled.div`
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    max-width: 1000px;
+  @media (max-width: 1285px) { // 475 + 810
+    left: 0;
     width: 100%;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    font-family: 'Inter', sans-serif; 
+  }
 
-      @media (max-width: 768px) {
-        flex-direction: column; 
-        margin: 1rem auto;
-    }
-`;
-
-const ContentContainer = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    gap: 40px; // Space between bio and skill list
+  @media (max-width: 810px) {
+    position: relative;
+    top: 44px;
+    padding: 20px 0;
+  }
 `;
 
 const Bio = styled.p`
-    font-size: 20px;
-    line-height: 1.6;
-    color: #333;
-    text-align: left;
-    font-family: 'Inter', sans-serif;
-`;
+  font-family: 'Fira Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  color: #333;
+  margin: 0;
 
-const SkillContainer = styled.div`
-    margin-top: 20px; 
+  @media (max-width: 810px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 `;
 
 
 const About: React.FC = () => {
     return (
-            <AboutContainer>
-                <ContentContainer>
+            <BioContainer>
                     <Bio>
-                        <p>Jungyoon Lim (b. 1999, Seoul, KR) is a designer and design engineer. </p>
+                        <p>Jungyoon Lim (b. 1999, Seoul, KR) is a design engineer. </p>
                     </Bio>
-                </ContentContainer>
-        </AboutContainer>
+        </BioContainer>
     );
 };
 
