@@ -14,7 +14,7 @@ const HomeContainer = styled.div`
 const Contact: React.FC = () => {
     return (
         <HomeContainer>
-            <h2>Contact me at @jungyoonlim</h2>
+            <p>Contact me at @jungyoonlim</p>
         </HomeContainer>
     );
 };
