@@ -7,8 +7,7 @@ import GalleryNav from '../GalleryNav';
 import ArrowIcon from '../Icons/ArrowIcon';
 
 const GalleryContainer = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   min-height: 100vh;
   padding: 20px;

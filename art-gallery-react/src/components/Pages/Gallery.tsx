@@ -1,40 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const GalleryContainer = styled.div`
   display: flex;
   padding: 20px;
   background-color: #ffffff;
-`;
-
-const TextSection = styled.div`
-  width: 200px;
-  padding-right: 40px; 
-
-  h2 {
-    margin-bottom: 5px;
-  }
-
-  h4 {
-    margin-top: 5px; 
-    color: #59515E; 
-  }
-  
-  p {
-    margin-bottom: 30px; 
-    margin: 5px 0; 
-  }
-  
-  p:hover {
-    background-color: #B2BEB5; 
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
 `;
 
 const GridContainer = styled(motion.div)`
