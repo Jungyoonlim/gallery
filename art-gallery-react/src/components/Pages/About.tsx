@@ -27,7 +27,7 @@ const Bio = styled.p`
   font-family: 'Fira Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 36px;
   color: #333;
   margin: 0;
@@ -43,7 +43,7 @@ const About: React.FC = () => {
     return (
             <BioContainer>
                     <Bio>
-                        <p>Jungyoon Lim (b. 1999, Seoul, KR) is a design engineer. </p>
+                        <p>Jungyoon Lim (b. 1999, Seoul, Korea) is a design engineer. </p>
                     </Bio>
         </BioContainer>
     );
