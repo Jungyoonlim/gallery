@@ -44,6 +44,8 @@ const About: React.FC = () => {
             <BioContainer>
                     <Bio>
                         <p>Jungyoon Lim (b. 1999, Seoul, Korea) is a design engineer. </p>
+                        <p>She spent most of her childhood drawing and painting, <br></br> her teenage years reading classics, <br></br>studied math and ancient philosophy in college, <br></br> but now she designs and codes digital objects. 
+                        </p>
                     </Bio>
         </BioContainer>
     );
