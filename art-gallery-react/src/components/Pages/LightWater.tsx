@@ -6,6 +6,16 @@ import { waterArtworks } from '../../data/artworks';
 import GalleryNav from '../GalleryNav';
 import ArrowIcon from '../Icons/ArrowIcon';
 
+interface CustomMotionDivProps {
+    isBlurred: boolean; 
+}
+
+const CustomMotionDiv = styled(motion.div)<CustomMotionDivProps>`
+    opacity: ${props => props.isBlurred ? 0.2 : 1};
+    filter: ${props => props.isBlurred ? 'blur(5px)' : 'none'};
+    transition: opacity 0.3s ease, filter 0.3s ease;
+`;
+
 const GalleryContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
@@ -80,6 +90,7 @@ const ImageWrapper = styled(motion.div)`
 const LightWater: React.FC = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [direction, setDirection] = useState(0);
+    const [hoveredId, setHoveredId] = useState<number | null>(null); 
 
     const slideVariants = {
         enter: (direction: number) => ({
@@ -124,15 +135,18 @@ const LightWater: React.FC = () => {
         <GalleryContainer>
             <GridContainer layout>
                 {waterArtworks.map((artwork, index) => (
-                    <motion.div
+                    <CustomMotionDiv
                         key={artwork.id}
+                        isBlurred={hoveredId !== null && hoveredId !== artwork.id}
                         layoutId={`artwork-${artwork.id}`}
                         onClick={() => handleArtworkClick(index)}
+                        onMouseEnter={() => setHoveredId(artwork.id)}
+                        onMouseLeave={() => setHoveredId(null)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
                         <ArtworkCard artwork={artwork} />
-                    </motion.div>
+                    </CustomMotionDiv>
                 ))}
             </GridContainer>
             <AnimatePresence initial={false} custom={direction}>
