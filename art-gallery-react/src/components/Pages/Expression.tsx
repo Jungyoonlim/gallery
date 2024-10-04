@@ -87,7 +87,7 @@ const ImageWrapper = styled(motion.div)`
   align-items: center;
 `;
 
-const express: React.FC = () => {
+const Expression: React.FC = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [direction, setDirection] = useState(0);
     const [hoveredId, setHoveredId] = useState<number | null>(null); 
@@ -195,4 +195,4 @@ const express: React.FC = () => {
     );
 };
 
-export default express;
+export default Expression;
