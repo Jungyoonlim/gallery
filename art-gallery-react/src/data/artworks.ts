@@ -34,7 +34,18 @@ export const waterArtworks: Artwork[] = [
 ]
 
 export const expressionArtworks: Artwork[] = [
-
+    {
+        id: 1,
+        title: "faces",
+        imageUrl: "/images/faces.jpg",
+        description: "expressions",
+    },
+    {
+        id: 2,
+        title: "horizontalface",
+        imageUrl: "/images/horizontalface.jpg",
+        description: "expression",    
+    },
 ]
 
 

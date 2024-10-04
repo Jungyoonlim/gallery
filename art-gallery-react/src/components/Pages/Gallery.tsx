@@ -75,6 +75,7 @@ const Gallery: React.FC = () => {
     { id: 6, top: 512, left: 1087, width: 322, height: 443, url: "/images/light.jpg" },
     { id: 7, top: 660, left: 327, width: 350, height: 263.46, url: "/images/glass.jpg" },
     { id: 8, top: 648, left: 715, width: 350, height: 287.46, url: "/images/duck.jpg" },
+    { id: 9, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/horizontalface.jpg" },
   ];
 
   return (
