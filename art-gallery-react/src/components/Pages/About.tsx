@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 const BioContainer = styled.div`
   position: absolute;
@@ -11,7 +10,7 @@ const BioContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
 
-  @media (max-width: 1285px) { // 475 + 810
+  @media (max-width: 1285px) { 
     left: 0;
     width: 100%;
   }
