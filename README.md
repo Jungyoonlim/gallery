@@ -15,3 +15,5 @@
 - [ ] More photos for artwork
 - [ ] responsive design for the About page 
 - [ ] Make a personal + responsive icon 
+- [ ] Contact me page
+- [ ] Design the entire website esp. layout!!  
