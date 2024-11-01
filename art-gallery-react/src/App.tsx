@@ -9,6 +9,7 @@ import Layout from './components/Layout';
 import styled from 'styled-components';
 import './styles/index.css';
 import './App.css';
+import Doodle from './components/Pages/Doodle';
 
 const AppContainer = styled.div`
   max-width: 100%;
@@ -26,6 +27,7 @@ const App: React.FC = () => {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/lightwater" element={<LightWater />} />
             <Route path="/expression" element={<Expression />} />
+            <Route path="/doodle" element={<Doodle />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Layout>

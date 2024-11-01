@@ -50,7 +50,28 @@ export const expressionArtworks: Artwork[] = [
 
 
 export const doodleArtworks: Artwork[] = [
-
-
-
+    {
+        id:1,
+        title: "doodle1",
+        imageUrl: "/images/doodle1.jpg",
+        description: "doodle",
+    },
+    {
+        id:2,
+        title: "doodle2",
+        imageUrl: "/images/doodle2.jpg",
+        description: "doodle",
+    },
+    {
+        id:3,
+        title: "doodle3",
+        imageUrl: "/images/doodle3.jpg",
+        description: "doodle",
+    },
+    {
+        id:4,
+        title: "doodle4",
+        imageUrl: "/images/doodle4.jpg",
+        description: "doodle",
+    }
 ]
