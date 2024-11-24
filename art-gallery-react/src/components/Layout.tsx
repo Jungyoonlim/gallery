@@ -5,17 +5,31 @@ import { Link } from 'react-router-dom';
 const LayoutContainer = styled.div`
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const Sidebar = styled.nav`
-  width: 200px;
+  width: 100%;
   background-color: #ffffff;
-  padding: 50px;
+  padding: 20px;
+  
+  @media (min-width: 768px) {
+    width: 200px;
+    padding: 50px;
+  }
 `;
 
 const Content = styled.main`
   flex: 1;
-  padding: 20px;
+  padding: 15px;
+  
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const SidebarLink = styled(Link)`
@@ -24,8 +38,13 @@ const SidebarLink = styled(Link)`
   text-decoration: none;
   color: #333;
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 24px;
+  
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 `;
 
 interface LayoutProps {
