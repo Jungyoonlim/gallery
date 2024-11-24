@@ -9,11 +9,17 @@ const GalleryContainer = styled.div`
 `;
 
 const GridContainer = styled(motion.div)`
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  flex-grow: 1; 
-  padding: 20px; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
 `;
 
 const GridItem = styled.div<{url: string}>`
@@ -48,7 +54,19 @@ const SlideshowContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; 
+  z-index: 1000;
+  padding: 10px;
+  
+  img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    
+    @media (min-width: 768px) {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+  }
 `;
 
 const CloseButton = styled(motion.button)`
