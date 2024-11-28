@@ -28,11 +28,11 @@ const GalleryContainer = styled(motion.div)`
 
 const GridContainer = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
   width: 100%;
   margin-top: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
 `;
 
 const SlideshowContainer = styled(motion.div)`
@@ -80,8 +80,8 @@ const NextButton = styled(NavigationButton)`
 `;
 
 const ImageWrapper = styled(motion.div)`
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
