@@ -7,7 +7,7 @@ const About: React.FC = () => {
             md:pt-8 md:pl-8
             sm:pt-6 sm:pl-6">
             <div className="max-w-3xl">
-                <p className="font-libre text-[24px] leading-[30px] text-black
+                <p className="font-inter text-[24px] leading-[30px] text-black
                     lg:text-[22px] lg:leading-[28px]
                     md:text-[20px] md:leading-[26px]
                     sm:text-[18px] sm:leading-[24px]">

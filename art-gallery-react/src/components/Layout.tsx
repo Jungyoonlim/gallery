@@ -57,9 +57,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Sidebar>
         <SidebarLink to="/about">About</SidebarLink>
         <SidebarLink to="/gallery">Overview</SidebarLink>
-        <SidebarLink to="/LightWater">Light and Water</SidebarLink>
-        <SidebarLink to="/Expression">Expressions</SidebarLink>
-        <SidebarLink to="/doodle">Doodle</SidebarLink>
         <SidebarLink to="/contact">Contact</SidebarLink>
       </Sidebar>
       <Content>
