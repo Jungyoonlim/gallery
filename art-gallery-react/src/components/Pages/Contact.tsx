@@ -8,7 +8,7 @@ const HomeContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #000000;
 `
 
 const Contact: React.FC = () => {
