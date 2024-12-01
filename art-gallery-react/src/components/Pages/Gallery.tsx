@@ -99,7 +99,7 @@ const Gallery: React.FC = () => {
     { id: 12, top: 340, left: 327, width: 350, height: 283.33, url: "/images/met.jpg" },
     { id: 13, top: 660, left: 327, width: 350, height: 263.46, url: "/images/portrait.jpg" },
     { id: 14, top: 660, left: 327, width: 350, height: 263.46, url: "/images/IMG_1981.jpg" },
-    { id: 415 top: 343, left: 715, width: 350, height: 277.33, url: "/images/chandelier.jpg" }
+    { id: 15, top: 343, left: 715, width: 350, height: 277.33, url: "/images/chandelier.jpg" },
   ];
 
   return (
