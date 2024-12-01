@@ -67,3 +67,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 export default Layout;
+
+/**
+ * 
+ * <SidebarLink to="/LightWater">Light and Water</SidebarLink>
+        <SidebarLink to="/Expression">Expressions</SidebarLink>
+        <SidebarLink to="/doodle">Doodle</SidebarLink>
+ */

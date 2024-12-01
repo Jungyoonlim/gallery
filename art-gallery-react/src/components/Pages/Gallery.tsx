@@ -95,7 +95,8 @@ const Gallery: React.FC = () => {
     { id: 8, top: 648, left: 715, width: 350, height: 287.46, url: "/images/duck.jpg" },
     { id: 9, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/horizontalface.jpg" },
     { id: 10, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/flower.jpg" },
-    { id: 11, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/snow-school.jpg"}
+    { id: 11, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/snow-school.jpg"},
+    { id: 12, top: 340, left: 327, width: 350, height: 283.33, url: "/images/met.jpg" }
   ];
 
   return (
