@@ -85,22 +85,24 @@ const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null); 
 
   const artworks = [
-    { id: 1, top: 37, left: 327, width: 350, height: 269.36, url: "/images/pond.jpg" },
-    { id: 2, top: 37, left: 1087, width: 332, height: 451.14, url: "/images/lilies.jpg" },
-    { id: 3, top: 340, left: 327, width: 350, height: 283.33, url: "/images/water.jpg" },
-    { id: 4, top: 37, left: 715, width: 350, height: 277.33, url: "/images/pond_print.jpg" },
-    { id: 5, top: 37, left: 715, width: 350, height: 277.33, url: "/images/pond_print2.jpg" },
-    { id: 6, top: 343, left: 715, width: 350, height: 277.33, url: "/images/faces.jpg" },
-    { id: 7, top: 512, left: 1087, width: 322, height: 443, url: "/images/light.jpg" },
-    { id: 8, top: 660, left: 327, width: 350, height: 263.46, url: "/images/glass.jpg" },
-    { id: 9, top: 648, left: 715, width: 350, height: 287.46, url: "/images/duck.jpg" },
-    { id: 10, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/horizontalface.jpg" },
-    { id: 11, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/flower.jpg" },
-    { id: 12, top: 660, left: 1087, width: 350, height: 277.33, url: "/images/snow-school.jpg"},
-    { id: 13, top: 340, left: 327, width: 350, height: 283.33, url: "/images/met.jpg" },
-    { id: 14, top: 660, left: 327, width: 350, height: 263.46, url: "/images/portrait.jpg" },
-    { id: 15, top: 660, left: 327, width: 350, height: 263.46, url: "/images/IMG_1981.jpg" },
-    { id: 16, top: 343, left: 715, width: 350, height: 277.33, url: "/images/chandelier.jpg" },
+    { id: 1, url: "/images/pond.jpg" },
+    { id: 2, url: "/images/lilies.jpg" },
+    { id: 3, url: "/images/water.jpg" },
+    { id: 4, url: "/images/pond_print.jpg" },
+    { id: 5, url: "/images/pond_print2.jpg" },
+    { id: 6, url: "/images/faces.jpg" },
+    { id: 7, url: "/images/light.jpg" },
+    { id: 8, url: "/images/glass.jpg" },
+    { id: 9, url: "/images/glass2.jpg" },
+    { id: 10, url: "/images/duck.jpg" },
+    { id: 11, url: "/images/horizontalface.jpg" },
+    { id: 12, url: "/images/flower.jpg" },
+    { id: 13, url: "/images/snow-school.jpg" },
+    { id: 14, url: "/images/met.jpg" },
+    { id: 15, url: "/images/portrait.jpg" },
+    { id: 16, url: "/images/portrait_print.jpg" },
+    { id: 17, url: "/images/IMG_1981.jpg" },
+    { id: 18, url: "/images/chandelier.jpg" }
   ];
 
   return (
