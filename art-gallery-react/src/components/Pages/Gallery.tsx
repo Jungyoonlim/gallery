@@ -11,9 +11,10 @@ const GalleryContainer = styled.div`
 const GridContainer = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
+  gap: 60px 20px;
   width: 100%;
   padding: 10px;
+  margin: 40px 0; 
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -27,10 +28,9 @@ const GridItem = styled.div<{url: string}>`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #EEEEEE;
   overflow: hidden; 
   justify-content: center;
-  align-items: center; 
+  align-items: flex-end; 
   
   img {
     max-width: 90%;
