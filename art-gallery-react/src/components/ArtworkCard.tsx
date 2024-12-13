@@ -1,45 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { Artwork } from '../types/artwork';
-
-const Card = styled.div`
-    width: 100%; 
-    height: 100%;
-    aspect-ratio: 16/9; 
-    overflow: hidden; 
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center; 
-`;
-
-const Image = styled.img`
-    width: 100%;
-    height: 100%; 
-    object-fit: cover; 
-`; 
-
-interface ArtworkCardProps {
-    artwork: Artwork; 
-}
 
 const ArtworkCardContainer = styled.div`
     width: 100%;
     height: 100%;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+    display: flex;
+    align-items: flex-end;
+    background-color: white;
 `;
 
-const ArtworkCard: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
+const StyledImage = styled.img`
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: bottom;
+    transition: opacity 0.3s ease-in-out;
+`;
+
+interface ArtworkCardProps {
+    artwork: Artwork;
+}
+
+const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork }) => {
+    const [isLoaded, setIsLoaded] = React.useState(false);
+
     return (
         <ArtworkCardContainer>
-            <img src={artwork.imageUrl} alt={artwork.title} />
+            <StyledImage
+                src={artwork.imageUrl}
+                alt={artwork.title}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setIsLoaded(true)}
+                style={{ opacity: isLoaded ? 1 : 0 }}
+            />
         </ArtworkCardContainer>
     );
 };
 
-export default ArtworkCard; 
+export default ArtworkCard;
