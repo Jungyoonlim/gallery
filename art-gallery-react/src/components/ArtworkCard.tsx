@@ -12,24 +12,28 @@ const ArtworkCardContainer = styled.div`
 
 interface ArtworkCardProps {
     artwork: Artwork;
+    placeholderBase64?: string;
 }
 
-const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork }) => {
+const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, placeholderBase64 }) => {
     const [isLoaded, setIsLoaded] = React.useState(false);
 
     return (
         <ArtworkCardContainer>
             <div style={{ position: 'relative' }}>
-                {!isLoaded && (
-                    <div
+                {!isLoaded && placeholderBase64 && (
+                    <img
+                        src={placeholderBase64}
+                        alt="placeholder"
                         style={{
+                            filter: 'blur(10px)',
                             width: '100%',
-                            height: '100%',
-                            background: '#f0f0f0',
+                            height: 'auto',
                             position: 'absolute',
                             top: 0,
                             left: 0,
-                            zIndex: 1
+                            zIndex: 1,
+                            transition: 'opacity 0.3s ease-in-out',
                         }}
                     />
                 )}
@@ -39,7 +43,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork }) => {
                     loading="lazy"
                     style={{
                         opacity: isLoaded ? 1 : 0,
-                        transition: 'opacity 0.3s ease-in-out',
+                        transition: 'opacity 0.4s ease-in-out',
                         display: 'block',
                         width: '100%',
                         height: 'auto'
