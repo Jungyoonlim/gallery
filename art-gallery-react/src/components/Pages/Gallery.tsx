@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const GalleryContainer = styled.div`
+const GalleryContainer = styled.div<{ allLoaded: boolean }>`
   display: flex;
   padding: 20px;
   background-color: #ffffff;
+  transition: opacity 0.6s ease-in-out;
+  opacity: ${(props) => (props.allLoaded ? 1 : 0)};
 `;
 
 const GridContainer = styled(motion.div)`
@@ -106,7 +108,7 @@ const Gallery: React.FC = () => {
   ];
 
   return (
-    <GalleryContainer>
+    <GalleryContainer allLoaded={true}>
     <GridContainer>
       {artworks.map((artwork) => (
         <motion.div
