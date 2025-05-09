@@ -37,19 +37,39 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, placeholderBase64 })
                         }}
                     />
                 )}
-                <img
-                    src={artwork.imageUrl}
-                    alt={artwork.title}
-                    loading="lazy"
-                    style={{
-                        opacity: isLoaded ? 1 : 0,
-                        transition: 'opacity 0.4s ease-in-out',
-                        display: 'block',
-                        width: '100%',
-                        height: 'auto'
-                    }}
-                    onLoad={() => setIsLoaded(true)}
-                />
+                {artwork.webpUrl ? (
+                    <picture>
+                        <source srcSet={artwork.webpUrl} type="image/webp" />
+                        <source srcSet={artwork.imageUrl} type="image/jpeg" />
+                        <img
+                            src={artwork.imageUrl}
+                            alt={artwork.title}
+                            loading="lazy"
+                            style={{
+                                opacity: isLoaded ? 1 : 0,
+                                transition: 'opacity 0.4s ease-in-out',
+                                display: 'block',
+                                width: '100%',
+                                height: 'auto'
+                            }}
+                            onLoad={() => setIsLoaded(true)}
+                        />
+                    </picture>
+                ) : (
+                    <img
+                        src={artwork.imageUrl}
+                        alt={artwork.title}
+                        loading="lazy"
+                        style={{
+                            opacity: isLoaded ? 1 : 0,
+                            transition: 'opacity 0.4s ease-in-out',
+                            display: 'block',
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                        onLoad={() => setIsLoaded(true)}
+                    />
+                )}
             </div>
         </ArtworkCardContainer>
     );

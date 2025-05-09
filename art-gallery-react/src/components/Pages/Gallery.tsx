@@ -84,27 +84,27 @@ const CloseButton = styled(motion.button)`
 
 
 const Gallery: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null); 
+  const [selectedImage, setSelectedImage] = useState<{ jpg: string; webp: string } | null>(null); 
 
   const artworks = [
-    { id: 1, url: "/images/pond.jpg" },
-    { id: 2, url: "/images/lilies.jpg" },
-    { id: 3, url: "/images/water.jpg" },
-    { id: 4, url: "/images/pond_print.jpg" },
-    { id: 5, url: "/images/pond_print2.jpg" },
-    { id: 6, url: "/images/faces.jpg" },
-    { id: 7, url: "/images/light.jpg" },
-    { id: 8, url: "/images/glass.jpg" },
-    { id: 9, url: "/images/glass2.jpg" },
-    { id: 10, url: "/images/duck.jpg" },
-    { id: 11, url: "/images/horizontalface.jpg" },
-    { id: 12, url: "/images/flower.jpg" },
-    { id: 13, url: "/images/snow-school.jpg" },
-    { id: 14, url: "/images/met.jpg" },
-    { id: 15, url: "/images/portrait.jpg" },
-    { id: 16, url: "/images/portrait_print.jpg" },
-    { id: 17, url: "/images/IMG_1981.jpg" },
-    { id: 18, url: "/images/chandelier.jpg" }
+    { id: 1, url: "/images/pond.jpg", webpUrl: "/images/webp/pond.webp" },
+    { id: 2, url: "/images/lilies.jpg", webpUrl: "/images/webp/lilies.webp" },
+    { id: 3, url: "/images/water.jpg", webpUrl: "/images/webp/water.webp" },
+    { id: 4, url: "/images/pond_print.jpg", webpUrl: "/images/webp/pond_print.webp" },
+    { id: 5, url: "/images/pond_print2.jpg", webpUrl: "/images/webp/pond_print2.webp" },
+    { id: 6, url: "/images/faces.jpg", webpUrl: "/images/webp/faces.webp" },
+    { id: 7, url: "/images/light.jpg", webpUrl: "/images/webp/light.webp" },
+    { id: 8, url: "/images/glass.jpg", webpUrl: "/images/webp/glass.webp" },
+    { id: 9, url: "/images/glass2.jpg", webpUrl: "/images/webp/glass2.webp" },
+    { id: 10, url: "/images/duck.jpg", webpUrl: "/images/webp/duck.webp" },
+    { id: 11, url: "/images/horizontalface.jpg", webpUrl: "/images/webp/horizontalface.webp" },
+    { id: 12, url: "/images/flower.jpg", webpUrl: "/images/webp/flower.webp" },
+    { id: 13, url: "/images/snow-school.jpg", webpUrl: "/images/webp/snow-school.webp" },
+    { id: 14, url: "/images/met.jpg", webpUrl: "/images/webp/met.webp" },
+    { id: 15, url: "/images/portrait.jpg", webpUrl: "/images/webp/portrait.webp" },
+    { id: 16, url: "/images/portrait_print.jpg", webpUrl: "/images/webp/portrait_print.webp" },
+    { id: 17, url: "/images/IMG_1981.jpg", webpUrl: "/images/webp/IMG_1981.webp" },
+    { id: 18, url: "/images/chandelier.jpg", webpUrl: "/images/webp/chandelier.webp" }
   ];
 
   return (
@@ -119,9 +119,13 @@ const Gallery: React.FC = () => {
           <GridItem
           key={artwork.id}
           url={artwork.url}
-          onClick={() => setSelectedImage(artwork.url)}
+          onClick={() => setSelectedImage({ jpg: artwork.url, webp: artwork.webpUrl })}
         >
-          <Image src={artwork.url} alt={`Artwork ${artwork.id}`} />
+          <picture>
+            <source srcSet={artwork.webpUrl} type="image/webp" />
+            <source srcSet={artwork.url} type="image/jpeg" />
+            <Image src={artwork.url} alt={`Artwork ${artwork.id}`} />
+          </picture>
         </GridItem>
         </motion.div>
       ))}
@@ -133,7 +137,11 @@ const Gallery: React.FC = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <img src={selectedImage} alt="Selected artwork" style={{ maxHeight: '80vh', maxWidth: '80vw' }} />
+          <picture>
+            <source srcSet={selectedImage.webp} type="image/webp" />
+            <source srcSet={selectedImage.jpg} type="image/jpeg" />
+            <img src={selectedImage.jpg} alt="Selected artwork" style={{ maxHeight: '80vh', maxWidth: '80vw' }} />
+          </picture>
           <CloseButton onClick={() => setSelectedImage(null)}>✕</CloseButton>
         </SlideshowContainer>
       )}
