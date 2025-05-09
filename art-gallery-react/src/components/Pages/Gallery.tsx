@@ -135,7 +135,8 @@ const Gallery: React.FC = () => {
                 webpSrc={artwork.webpUrl}
                 placeholderSrc={artwork.placeholderUrl}
                 alt={`Artwork ${artwork.id}`}
-                // Don't lazy load the first 6 images (visible above the fold)
+                // Eager load the first 6 images (visible above the fold)
+                loading={index < 6 ? 'eager' : 'lazy'}
                 style={{ width: '100%', height: '100%' }}
                 onLoad={index < 6 ? handleImageLoad : undefined}
               />
